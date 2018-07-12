@@ -147,3 +147,50 @@ Temporal decomposition
 ----------------------
 
 ![](img/temporal-decomposition.svg)
+
+$N$-photon wavepacket
+
+$$\begin{multline}
+\left|N_\xi\right\rangle=(1-\tfrac{1}{2}|\xi_t|^2dt)\left|0_t\right\rangle
+\!\otimes\!\left|N_{\overline{t}}\right\rangle+
+\\
+\xi_t\sqrt{N\,dt\,}\left|1_t\right\rangle
+\!\otimes\!\left|(N-1)_{\overline{t}}\right\rangle
+\end{multline}$$
+
+Temporal decomposition
+----------------------
+
+$$\begin{multline}
+\left|N_{\gamma,\xi}\right\rangle=\left|N_t\right\rangle\!\otimes\!
+\left(\left|N_{\gamma,\overline{t}}\right\rangle+
+dt\left|\tilde{\psi}_{dt}\right\rangle\right)+
+\\
+\xi_t\sqrt{dt}\left|1_t\right\rangle
+\!\otimes\!\left(c\sqrt{N}\left|(N-1)_{\gamma,\overline{t}}\right\rangle+\right.
+\\
+\left.se^{2i\mu}\sqrt{N+1}\left|(N+1)_{\gamma,\overline{t}}\right\rangle\right)
+\end{multline}$$
+
+System state
+------------
+
+$$\rho_{t|\mathbf{R}}=\frac{\operatorname{tr}_{[t,\infty)}
+\Big[C_{\mathbf{R}}\big(\rho_0\otimes|0_{\gamma,\xi}\rangle
+\langle0_{\gamma,\xi}|\big)
+C_{\mathbf{R}}^\dagger\Big]}{\operatorname{Pr}(\mathbf{R})}$$
+$$C_{\mathbf{R}}=\langle\mathbf{R}|U_{0,t}\otimes\mathbb{1}_{[t,\infty)}$$
+
+"Bookkeeping" states
+--------------------
+
+$$\rho_{t|\mathbf{R}}^{(m,n)}=\frac{\operatorname{tr}_{[t,\infty)}
+\Big[C_{\mathbf{R}}\big(\rho_0\otimes|m_{\gamma,\xi}\rangle
+\langle n_{\gamma,\xi}|\big)
+C_{\mathbf{R}}^\dagger\Big]}{\operatorname{Pr}(\mathbf{R})}$$
+$$C_{\mathbf{R}}=\langle\mathbf{R}|U_{0,t}\otimes\mathbb{1}_{[t,\infty)}$$
+
+Photon-counting evolution
+-------------------------
+
+![](img/photon-counting-equations.svg)
