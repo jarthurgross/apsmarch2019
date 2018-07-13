@@ -79,6 +79,69 @@ Amplitudes are not showing up "point by point" on the measuring device.
 The prospect of measuring without disturbing the system should be taken with a
 grain of salt.
 
+Inputs and outputs
+------------------
+
+![](img/input-output.svg)
+
+Inputs and outputs
+------------------
+
+![](img/discrete-input-output.svg)
+
+White noise {data-background-image="img/white-noise-background.png"}
+-----------
+
+Approximations
+
+1. Rotating wave (RWA)
+2. Quasimonochromatic
+3. 1ˢᵗ Markov
+4. 2ⁿᵈ Markov
+
+Quasimonochromatic and RWA {data-background-image="img/white-noise-background.png"}
+--------------------------
+
+![](img/quasimonochromatic.svg)
+
+$$\Omega^{-1}\ll\Delta t\ll\gamma^{-1}$$
+
+$$H_I^{(n)}=\sqrt{\frac{\gamma}{\Delta t}}\left(c\!\otimes\!b_n^\dagger
+-c^\dagger\!\otimes\!b_n\right)$$
+
+1<sup>st</sup> Markov {data-background-image="img/white-noise-background.png"}
+---------------------
+
+![](img/first-markov.svg)
+
+$$\Delta x\ll c\Delta t$$
+
+1ˢᵗ Markov {data-background-image="img/white-noise-background.png"}
+----------
+
+![](img/1st-markov.svg)
+
+$$\Delta x\ll c\Delta t$$
+
+2ⁿᵈ Markov {data-background-image="img/white-noise-background.png"}
+----------
+
+$$\tau_c\ll\Delta t$$
+
+All approximations {data-background-image="img/white-noise-background.png"}
+------------------
+
+-------------------------------------- --------------------------
+$\Delta x\ll c\Delta t$                First Markov
+$\tau_c \ll \Delta t$                  Second Markov
+$\Omega^{-1}\ll\Delta t\ll\gamma^{-1}$ RWA and quasimonochromatic
+-------------------------------------- --------------------------
+
+Markovian circuit {data-background-image="img/white-noise-background.png"}
+-----------------
+
+![](img/iter-meas.svg)
+
 Formalism for continuous measurements
 -------------------------------------
 
@@ -113,28 +176,53 @@ $$\langle[dB_t,dB_t^\dagger]\rangle=dt$$
 Mean fields are small rotations
 -------------------------------
 
-Bloch sphere picture of the rotation
+![](img/mean-field.svg)
+
+$$|\beta\rangle=D(\beta)|g\rangle=(1-\tfrac{1}{2}|\beta|^2dt)|g\rangle
++\beta\sqrt{dt}|e\rangle$$
+
+$$D(\beta)=\exp\!\left(\beta\sqrt{dt}\,\sigma_+
+-\beta^*\sqrt{dt}\,\sigma_-\right)$$
 
 Thermal fields are thermal qubits
 ---------------------------------
 
-Bloch sphere picture of thermal state
+![](img/thermal-field.svg)
 
-Mention how the effective coupling increases in strength
+$$\sigma_{\text{th}}=\tfrac{N}{2N+1}|e\rangle\langle e|
++\tfrac{N+1}{2N+1}|g\rangle\langle g|$$
+
+$$\gamma_N=(2N+1)\gamma$$
 
 Squeezed fields are modified couplings/measurements
 ---------------------------------------------------
 
-Show how correlations between quadratures translates into redefinition of $x$
-and $y$ to quadratures that are correlated in vacuum
+![](img/vacuum-orthogonal-quadratures.svg)
+
+Squeezed fields are modified couplings/measurements
+---------------------------------------------------
+
+![](img/squeezed-orthogonal-quadratures.svg)
+
+Squeezed fields are modified couplings/measurements
+---------------------------------------------------
+
+![](img/vacuum-correlated-quadratures.svg)
 
 Photon counting in the presence of squeezing
 --------------------------------------------
 
 Infinite photon flux in the broadband case
 
-Squeezed wavepackets have finite bandwidth
-------------------------------------------
+Squeezed wavepackets
+--------------------
+
+![](img/wavepacket.svg)
+
+$$S_\gamma[\xi]=\exp\left[\tfrac{1}{2}\left(\gamma^*B[\xi]^2
+-\gamma B^\dagger[\xi]^2\right)\right]$$
+
+$$B[\xi]=\int dt\,\xi^*_tb_t$$
 
 Squeezed wavepackets have temporal correlations
 -----------------------------------------------
@@ -157,6 +245,15 @@ $$\begin{multline}
 \xi_t\sqrt{N\,dt\,}\left|1_t\right\rangle
 \!\otimes\!\left|(N-1)_{\overline{t}}\right\rangle
 \end{multline}$$
+
+Temporal decomposition
+----------------------
+
+![](img/temporal-decomposition.svg)
+
+$$S_\gamma[\xi]=e^XS_\gamma[\overline{t}]e^{-X}$$
+
+$$X=-\xi^*_tdB_tB[\overline{t}]^\dagger+\xi_tdB_t^\dagger B[\overline{t}]$$
 
 Temporal decomposition
 ----------------------
