@@ -36,6 +36,11 @@ p.small {
   height: 300px;
 }
 
+.reveal section img {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6)
+}
+
 .reveal img {
   height: 100%;
 }
