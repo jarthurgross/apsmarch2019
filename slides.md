@@ -194,3 +194,21 @@ Photon-counting evolution
 -------------------------
 
 ![](img/photon-counting-equations.svg)
+
+Number states couple down and left
+----------------------------------
+
+![](img/number-hierarchy-coupling.svg)
+
+$$\dot{\rho}_{t|\mathbf{R}}^{(m,n)}=f\left(\rho_{t|\mathbf{R}}^{(m,n)},
+\rho_{t|\mathbf{R}}^{(m-1,n)},\rho_{t|\mathbf{R}}^{(m,n-1)},
+\rho_{t|\mathbf{R}}^{(m-1,n-1)}\right)$$
+
+Squeezed states couple every direction!
+---------------------------------------
+
+![](img/squeezed-hierarchy-coupling.svg)
+
+$$\dot{\rho}_{t|\mathbf{R}}^{(m,n)}=f\left(\rho_{t|\mathbf{R}}^{(m,n)},
+\rho_{t|\mathbf{R}}^{(m-1,n-1)},\ldots,
+\rho_{t|\mathbf{R}}^{(m+1,n+1)}\right)$$
