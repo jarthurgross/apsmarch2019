@@ -25,20 +25,15 @@ Real measurements have weakness
 
 Stern--Gerlach
 
-Real measurements have weakness
--------------------------------
-
-Transition-edge sensor
-
-Measurements are fuzzy processes
---------------------------------
-
-Outcomes are not definitive, and information flows continuously.
-
 Formalism for fuzzy measurements
 --------------------------------
 
-Kraus operators and POVMs
+![](img/weak-interaction.svg)
+
+$$K_j(\epsilon)=\langle o_j|U(\epsilon)|\phi\rangle$$
+
+$$|\psi^\prime\rangle=\langle o_j|U(\epsilon)|\psi\rangle\!\otimes\!|\phi\rangle
+=K_j(\epsilon)|\psi\rangle$$
 
 POVMs give nice weakness criteria
 ---------------------------------
@@ -47,15 +42,35 @@ Almost all measurement outcomes are uninformative
 
 "Most" of the POVM is "close" to identity
 
-Is weakness useful for characterization?
-----------------------------------------
+Judge utility by 3 criteria
+---------------------------
 
-Novelty, efficacy, and significance capture utility
----------------------------------------------------
+1. Novelty
+2. Efficacy
+3. Significance
+
+Novelty is useful
+-----------------
+
+![](img/random-odop-ckt.svg)
 
 Does weakness allow us to do something we couldn't otherwise do?
 
+Efficacy is useful
+------------------
+
 Does weakness allow us to do something better than we have previously?
+
+$$f(\rho,\sigma)=\operatorname{tr}\sqrt{\!\sqrt{\!\rho}\,\sigma\sqrt{\!\rho}},
+\quad
+\hat{\rho}:\mathtt{data}\mapsto\hat{\rho}(\mathtt{data}),$$
+$$\operatorname{Pr}(\mathtt{data})=
+\operatorname{tr}[dE(\mathtt{data})\sigma],$$
+$$F(dE)=\max_{\hat{\rho}}\mathbb{E}_{\mathtt{data}}\left[\mathbb{E}_\sigma\left(
+f[\hat{\rho}(\mathtt{data}),\sigma]\right)\right].$$
+
+Significance is useful
+----------------------
 
 Does weakness provide insight?
 
@@ -68,6 +83,21 @@ obscures how much is actually being learned about the system.
 Distilling the problem to its essence reveals more clearly what information
 is coming from the system (the POVM is a random ODOP).
 
+Das and Arvind
+--------------
+
+![](img/das-weak-interaction.svg)
+
+Das and Arvind
+--------------
+
+![](img/weak-meas-ckt.svg)
+
+Das and Arvind
+--------------
+
+![](img/random-projector-das.svg)
+
 Direct state tomography
 -----------------------
 
@@ -78,6 +108,51 @@ Amplitudes are not showing up "point by point" on the measuring device.
 
 The prospect of measuring without disturbing the system should be taken with a
 grain of salt.
+
+Direct state tomography
+-----------------------
+
+![](img/dst-meas.svg)
+
+Direct state tomography
+-----------------------
+
+![](img/z-dst-classical.svg)
+
+Direct state tomography
+-----------------------
+
+![](img/rephase-state-ckt.svg)
+
+Continuous measurements are weak
+--------------------------------
+
+![](img/NIST_Tungsten_Transition_Edge_Sensor.png)
+
+Continuous measurements are weak {data-background-image="img/tes-background.png"}
+--------------------------------
+
+![](img/trace-1.svg)
+
+Continuous measurements are weak {data-background-image="img/tes-background.png"}
+--------------------------------
+
+![](img/trace-2.svg)
+
+Continuous measurements are weak {data-background-image="img/tes-background.png"}
+--------------------------------
+
+![](img/trace-3.svg)
+
+Continuous measurements are weak {data-background-image="img/tes-background.png"}
+--------------------------------
+
+![](img/trace-4.svg)
+
+Continuous measurements are weak {data-background-image="img/tes-background.png"}
+--------------------------------
+
+![](img/trace-5.svg)
 
 Inputs and outputs
 ------------------
@@ -212,7 +287,19 @@ Squeezed fields are modified couplings/measurements
 Photon counting in the presence of squeezing
 --------------------------------------------
 
+![](img/infinite-bandwidth.svg)
+
 Infinite photon flux in the broadband case
+
+$$\langle b_tb_s\rangle=M\delta(t-s)$$
+$$\langle \tilde{b}_\Omega\tilde{b}_{\Omega-\omega}\rangle=\text{constant}$$
+
+Photon counting in the presence of squeezing
+--------------------------------------------
+
+![](img/finite-bandwidth.svg)
+
+Need restrict the bandwidth of the squeezing
 
 Squeezed wavepackets
 --------------------
@@ -227,9 +314,10 @@ $$B[\xi]=\int dt\,\xi^*_tb_t$$
 Squeezed wavepackets have temporal correlations
 -----------------------------------------------
 
-![](img/wavepacket-measurement.svg)
+![](img/wavepacket.svg)
 
-We won't get a Markovian master equation
+$$\langle b^\dagger_tb_s\rangle=\xi_t\xi^*_sN$$
+$$\langle b_tb_s\rangle=\xi_t^*\xi_s^*M$$
 
 Temporal decomposition
 ----------------------
@@ -271,6 +359,8 @@ dt\left|\tilde{\psi}_{dt}\right\rangle\right)+
 
 System state
 ------------
+
+![](img/wavepacket-measurement.svg)
 
 $$\rho_{t|\mathbf{R}}=\frac{\operatorname{tr}_{[t,\infty)}
 \Big[C_{\mathbf{R}}\big(\rho_0\otimes|0_{\gamma,\xi}\rangle
