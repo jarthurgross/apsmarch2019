@@ -16,24 +16,29 @@ Common introduced using "observables"
 Real measurements have weakness
 -------------------------------
 
-![](img/stern-gerlach-experiment.svg)
-
-Real measurements have weakness
--------------------------------
-
-![](img/stern-gerlach-scatter.svg)
-
-Stern--Gerlach
+![](img/stern-gerlach.svg)
 
 Formalism for fuzzy measurements
 --------------------------------
 
 ![](img/weak-interaction.svg)
 
-$$K_j(\epsilon)=\langle o_j|U(\epsilon)|\phi\rangle$$
+$$K_j=\langle o_j|U(\epsilon)|\phi\rangle$$
 
-$$|\psi^\prime\rangle=\langle o_j|U(\epsilon)|\psi\rangle\!\otimes\!|\phi\rangle
-=K_j(\epsilon)|\psi\rangle$$
+$$|\psi^\prime\rangle\propto
+\langle o_j|U(\epsilon)|\psi\rangle\!\otimes\!|\phi\rangle
+=K_j|\psi\rangle$$
+
+Formalism for fuzzy measurements
+--------------------------------
+
+![](img/weak-interaction.svg)
+
+$$E_j=K_j^\dagger K_j$$
+
+$$\operatorname{Pr}(o_j|\psi)
+=\operatorname{tr}[K_j|\psi\rangle\langle\psi|K_j^\dagger]
+=\operatorname{tr}[E_j|\psi\rangle\langle\psi|]$$
 
 POVMs give nice weakness criteria
 ---------------------------------
@@ -41,6 +46,8 @@ POVMs give nice weakness criteria
 Almost all measurement outcomes are uninformative
 
 "Most" of the POVM is "close" to identity
+
+$$\sum_{E\approx\lambda\mathbb{1}}E\approx\mathbb{1}$$
 
 Judge utility by 3 criteria
 ---------------------------
@@ -87,6 +94,11 @@ Das and Arvind
 --------------
 
 ![](img/das-weak-interaction.svg)
+
+Das and Arvind
+--------------
+
+![](img/continuous-meter.svg)
 
 Das and Arvind
 --------------
@@ -164,6 +176,14 @@ Inputs and outputs
 
 ![](img/discrete-input-output.svg)
 
+Formalism for continuous measurements
+-------------------------------------
+
+![](img/iter-meas.svg)
+
+$$\Delta\rho_{n|j}=\frac{K_j\rho_nK_j^\dagger}{\operatorname{tr}(E_j\rho_n)}
+-\rho_n$$
+
 White noise {data-background-image="img/white-noise-background.png"}
 -----------
 
@@ -217,20 +237,60 @@ Markovian circuit {data-background-image="img/white-noise-background.png"}
 
 ![](img/iter-meas.svg)
 
-Formalism for continuous measurements
--------------------------------------
+Unitary
+-------
 
-Kraus operators for state update
+$$\begin{multline}
+U_I^{(n)}=\mathbb{1}+\Delta tH_I^{(n)}+\tfrac{1}{2}\Delta t^2H_I^{(n)}^2
+\\
+=\mathbb{1}
++\sqrt{\gamma\Delta t}(c\!\otimes\!b_n^\dagger-c^\dagger\!\otimes\!b_n)
+\\
++\tfrac{1}{2}\gamma\Delta t(c\!\otimes\!b_n^\dagger
+-c^\dagger\!\otimes\!b_n)^2
+\end{multline}$$
 
-Field formalism
----------------
+Quantum noise
+-------------
 
-All the approximations!
+$$dB_t=\int_t^{t+dt}\!ds\,b_s$$
+
+$$\Delta B_n=\Delta t\frac{b_n}{\sqrt{\Delta t}}=\sqrt{\Delta t}\,b_n$$
+
+Vacuum
+------
+
+Single photon population within $\Delta t$ mode is small. Higher photon
+populations are negligible.
+
+$$dB_tdB_t^\dagger=dt$$
+
+$$dB_tdB_t=dB_t^\dagger dB_t=dB_t^\dagger dB_t^\dagger=0$$
+
+Vacuum
+------
+
+Since we only care about 0 or 1 photon in the mode, each $\Delta t$ mode is
+effectively a qubit:
+
+$$\Delta B_n=\sqrt{\Delta t}\,\sigma_-$$
+
+Unitary (revisited)
+-------------------
+
+$$\begin{multline}
+U_I^{(n)}=\mathbb{1}+\sqrt{\gamma}(c\!\otimes\!\Delta B_n^\dagger
+-c^\dagger\!\otimes\!\Delta B_n)
+\\
+-\tfrac{1}{2}\gamma\Delta t\,c^\dagger c
+\end{multline}$$
 
 Homodyne measurement in qubit picture
 -------------------------------------
 
-$$dB_t^\dagger+dB_t\propto\sigma_x$$
+$$dB_t^\dagger+dB_t$$
+$$\Delta B_n+\Delta B_n^\dagger=\sqrt{\Delta t}(\sigma_-+\sigma_+)
+\propto\sigma_x$$
 
 Spin-coherent-state measurement
 -------------------------------
@@ -382,20 +442,46 @@ Photon-counting evolution
 
 ![](img/photon-counting-equations.svg)
 
-Number states couple down and left
-----------------------------------
+Number couples &leftarrow; and &downarrow;
+------------------------------------------
 
 ![](img/number-hierarchy-coupling.svg)
 
-$$\dot{\rho}_{t|\mathbf{R}}^{(m,n)}=f\left(\rho_{t|\mathbf{R}}^{(m,n)},
+$$d\rho_{t|\mathbf{R}}^{(m,n)}=f\left(\rho_{t|\mathbf{R}}^{(m,n)},
 \rho_{t|\mathbf{R}}^{(m-1,n)},\rho_{t|\mathbf{R}}^{(m,n-1)},
 \rho_{t|\mathbf{R}}^{(m-1,n-1)}\right)$$
 
-Squeezed states couple every direction!
----------------------------------------
+Squeezed couples &leftarrow;, &rightarrow;, &downarrow;, &uparrow;!
+-------------------------------------------------------------------
 
 ![](img/squeezed-hierarchy-coupling.svg)
 
-$$\dot{\rho}_{t|\mathbf{R}}^{(m,n)}=f\left(\rho_{t|\mathbf{R}}^{(m,n)},
+$$d\rho_{t|\mathbf{R}}^{(m,n)}=f\left(\rho_{t|\mathbf{R}}^{(m,n)},
 \rho_{t|\mathbf{R}}^{(m-1,n-1)},\ldots,
 \rho_{t|\mathbf{R}}^{(m+1,n+1)}\right)$$
+
+Simulation requires truncation
+------------------------------
+
+![](img/squeezed-hierarchy-boundary.svg)
+
+$m\geq n_{\text{max}}$ or $n\geq n_{\text{max}}$:
+
+$$\rho_{t|\mathbf{R}}^{(m,n)}=\mathbb{0}$$
+
+Need to compare truncations
+---------------------------
+
+![](img/truncate-squeezed-state.svg)
+
+Number hierarchy: exact evolution for approximate initial state
+
+Need to compare truncations
+---------------------------
+
+![](img/wavepacket-bipartition.svg)
+
+Squeezed hierarchy: exact initial state, approximate evolution
+
+&nbsp; {data-background-image="img/medium-wavepacket-convergence-rates.svg"}
+------
