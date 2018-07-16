@@ -82,11 +82,7 @@ cite.attribution {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
   border: 4px solid #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
-
-
-math {
-  font-family: 'Latin Modern Math';
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
 .smallfig img {
@@ -145,6 +141,19 @@ math {
   text-align: center;
 }
 
+/* Math related formatting */
+
+/* Remove padding in mathml tables so the "aligned" environment doesn't look
+ * terrible.
+ */
+mtd {
+  padding: 0;
+}
+
 mtext {
   font-family: 'Lato Light', 'Source Sans Pro', Helvetica, sans-serif;
+}
+
+math {
+  font-family: 'Latin Modern Math';
 }
