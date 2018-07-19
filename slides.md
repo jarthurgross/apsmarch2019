@@ -3,41 +3,66 @@ title: 'Weak measurements'
 subtitle: 'for quantum characterization and control'
 abstract: ''
 author: Jonathan A. Gross
-coauthor:
-  - Carlton M. Caves
 
 ---
 
-Ideal measurements are strong
------------------------------
+Measurements are questions
+--------------------------
 
-Common introduced using "observables"
+Answers are random and depend on the configuration of the world.
 
-Real measurements have weakness
--------------------------------
+The world reconfigures itself to act consistently with its answers.
+
+We can ask precise questions
+----------------------------
+
+Possible answers $\{o_1,o_2,\ldots\}$
+
+World configuration $|\psi\rangle$:
+
+$$\operatorname{Pr}(o_j|\psi)=|\langle o_j|\psi\rangle|^2$$
+
+Reconfiguration:
+
+$$|\psi\rangle\overset{o_j}{\rightarrow}|o_j\rangle$$
+
+We can ask imprecise questions
+------------------------------
 
 ![](img/stern-gerlach.svg)
 
-Formalism for fuzzy measurements
---------------------------------
+Want to know: did the atom follow the [**red**]{.red} or the [**blue**]{.blue}
+arrow?
+
+Ask: did the atom hit the top or bottom half of the screen?
+
+All measurements have imprecision
+---------------------------------
+
+![](img/stern-gerlach.svg)
+
+*Precise* measurements are **strong**, *imprecise* measurements are **weak**.
+
+How do we describe weak measurements?
+
+Use an ignorant messenger
+-------------------------
 
 ![](img/weak-interaction.svg)
 
-$$K_j=\langle o_j|U(\epsilon)|\phi\rangle$$
+Kraus operator: $K_j=\langle o_j|U(\epsilon)|\phi\rangle$.
 
-$$|\psi^\prime\rangle\propto
-\langle o_j|U(\epsilon)|\psi\rangle\!\otimes\!|\phi\rangle
-=K_j|\psi\rangle$$
+$$|\psi\rangle\overset{o_j}{\rightarrow}|\psi^\prime\rangle\propto
+K_j|\psi\rangle$$
 
-Formalism for fuzzy measurements
---------------------------------
+Use an ignorant messenger
+-------------------------
 
 ![](img/weak-interaction.svg)
 
-$$E_j=K_j^\dagger K_j$$
+Positive-operator-valued measure (POVM):
 
-$$\operatorname{Pr}(o_j|\psi)
-=\operatorname{tr}[K_j|\psi\rangle\langle\psi|K_j^\dagger]
+$$E_j=K_j^\dagger K_j,\quad\operatorname{Pr}(o_j|\psi)
 =\operatorname{tr}[E_j|\psi\rangle\langle\psi|]$$
 
 POVMs give nice weakness criteria
@@ -49,143 +74,151 @@ Almost all measurement outcomes are uninformative
 
 $$\sum_{E\approx\lambda\mathbb{1}}E\approx\mathbb{1}$$
 
-Judge utility by 3 criteria
----------------------------
+Learn by asking questions
+-------------------------
 
-1. Novelty
-2. Efficacy
-3. Significance
+![](img/tomography.svg)
 
-Novelty is useful
------------------
+Quantum state tomography learns $\rho$ by polling a large population.
+
+Is it useful to ask imprecise questions?
+
+Precise questions are limited
+-----------------------------
 
 ![](img/random-odop-ckt.svg)
 
-Does weakness allow us to do something we couldn't otherwise do?
+Random projective measurement
 
-Efficacy is useful
-------------------
+Weakness can be a resource
+--------------------------
 
-Does weakness allow us to do something better than we have previously?
+![](img/weak-meas-universal.svg)
 
-$$f(\rho,\sigma)=\operatorname{tr}\sqrt{\!\sqrt{\!\rho}\,\sigma\sqrt{\!\rho}},
-\quad
-\hat{\rho}:\mathtt{data}\mapsto\hat{\rho}(\mathtt{data}),$$
-$$\operatorname{Pr}(\mathtt{data})=
-\operatorname{tr}[dE(\mathtt{data})\sigma],$$
-$$F(dE)=\max_{\hat{\rho}}\mathbb{E}_{\mathtt{data}}\left[\mathbb{E}_\sigma\left(
-f[\hat{\rho}(\mathtt{data}),\sigma]\right)\right].$$
+Can measure in ways random projective measurements can't.
 
-Significance is useful
-----------------------
+Novelty claims abound
+---------------------
 
-Does weakness provide insight?
+![](img/Das2014.svg)
 
-Das and Arvind
---------------
+> This opens up the possibility of new ways of extracting information from
+> quantum ensembles.
 
-Story about extracting some information and then extracting more information
-obscures how much is actually being learned about the system.
+Novelty claims abound
+---------------------
 
-Distilling the problem to its essence reveals more clearly what information
-is coming from the system (the POVM is a random ODOP).
+![](img/Das2014.svg)
 
-Das and Arvind
---------------
+POVM analysis is absent from this and many other proposals, *yet demonstrating
+properties like novelty requires such analysis*.
+
+Be the change you want to see
+-----------------------------
+
+![](img/weak-meas-tomo.svg)
+
+We did the analysis!
+
+Couple to meter
+---------------
 
 ![](img/das-weak-interaction.svg)
 
-Das and Arvind
---------------
+$$|\phi\rangle=
+\sqrt[4]{\frac{\epsilon}{2\pi}}\int dq\,e^{-\epsilon q^2/4}|q\rangle$$
+
+Displace wide Gaussians
+-----------------------
 
 ![](img/continuous-meter.svg)
 
-Das and Arvind
---------------
+$$K^{(j)}(q)\propto\cosh(\tfrac{1}{2}\epsilon q)\mathbb{1}
++\sinh(\tfrac{1}{2}\epsilon q)\sigma_j$$
+$$\epsilon=1/\Delta q^2$$
+
+Compose measurements
+--------------------
 
 ![](img/weak-meas-ckt.svg)
 
-Das and Arvind
---------------
+$$\begin{aligned}
+K_\pm(q_1,q_2)&=|\pm y\rangle\langle\pm y|K^{(x)}(q_2)K^{(z)}(q_1)
+\\
+&\propto|\pm y\rangle\langle\phi_\pm(q_1,q_2)|
+\end{aligned}$$
+
+POVM is made of projectors
+--------------------------
+
+![](img/weak-meas-ckt.svg)
+
+$$dE_\pm(q_1,q_2)=dq_1dq_2D(q_1,q_2)\tfrac{1}{2}(\mathbb{1}
++\hat{\mathbf{n}}_\pm(q_1,q_2)\!\cdot\!\mathbf{\sigma})$$
+
+Elements come in pairs!
+-----------------------
+
+![](img/projector-pairs.svg)
+
+$$\begin{aligned}
+D(q_1,q_2)&=D(-q_1,-q_2)
+\\
+\hat{\mathbf{n}}_\pm(q_1,q_2)&=-\hat{\mathbf{n}}_\mp(-q_1,-q_2)
+\end{aligned}$$
+
+Equivalent to random strong measurement
+---------------------------------------
 
 ![](img/random-projector-das.svg)
 
-Direct state tomography
------------------------
+$$d\tilde{E}_\pm(q_1,q_2)=dq_1dq_2D(q_1,q_2)\tfrac{1}{2}(\mathbb{1}
+\pm\hat{\mathbf{n}}_+(q_1,q_2)\!\cdot\!\mathbf{\sigma})$$
 
-Postselection clouds rather than clarifies (use Kraus operator expressions
-(4.17) through (4.19) and the circuit Fig. 4.4 to illustrate).
+Represent as hemisphere distribution
+------------------------------------
 
-Amplitudes are not showing up "point by point" on the measuring device.
+![](img/bloch_densities.svg)
 
-The prospect of measuring without disturbing the system should be taken with a
-grain of salt.
+$$d\tilde{E}_\pm(q_1,q_2)=dq_1dq_2D(q_1,q_2)\tfrac{1}{2}(\mathbb{1}
+\pm\hat{\mathbf{n}}_+(q_1,q_2)\!\cdot\!\mathbf{\sigma})$$
 
-Direct state tomography
------------------------
 
-![](img/dst-meas.svg)
+POVMs show protocol equivalence
+-------------------------------
 
-Direct state tomography
------------------------
+If two protocols give the same measure over positive operators, they yield the
+same information content.
 
-![](img/z-dst-classical.svg)
+Use this strategy to investigate continuous-measurement protocols.
 
-Direct state tomography
------------------------
+First, what are continuous measurements?
 
-![](img/rephase-state-ckt.svg)
-
-Continuous measurements are weak
---------------------------------
-
-![](img/NIST_Tungsten_Transition_Edge_Sensor.png)
-
-Continuous measurements are weak {data-background-image="img/tes-background.png"}
---------------------------------
-
-![](img/trace-1.svg)
-
-Continuous measurements are weak {data-background-image="img/tes-background.png"}
---------------------------------
-
-![](img/trace-2.svg)
-
-Continuous measurements are weak {data-background-image="img/tes-background.png"}
---------------------------------
-
-![](img/trace-3.svg)
-
-Continuous measurements are weak {data-background-image="img/tes-background.png"}
---------------------------------
-
-![](img/trace-4.svg)
-
-Continuous measurements are weak {data-background-image="img/tes-background.png"}
---------------------------------
-
-![](img/trace-5.svg)
-
-Inputs and outputs
-------------------
+Use a field for continuous measurement
+--------------------------------------
 
 ![](img/input-output.svg)
 
-Inputs and outputs
-------------------
+&nbsp;
+
+Discretize the field </br> &nbsp;
+---------------------------------
 
 ![](img/discrete-input-output.svg)
 
-Formalism for continuous measurements
--------------------------------------
+Each segment performs a weak measurement
+
+Get difference equation
+-----------------------
 
 ![](img/iter-meas.svg)
 
 $$\Delta\rho_{n|j}=\frac{K_j\rho_nK_j^\dagger}{\operatorname{tr}(E_j\rho_n)}
 -\rho_n$$
+When can we do this?
 
-White noise {data-background-image="img/white-noise-background.png"}
------------
+Work in white-noise regime {data-background-image="img/white-noise-background.png"}
+--------------------------
 
 Approximations
 
@@ -201,11 +234,11 @@ Quasimonochromatic and RWA {data-background-image="img/white-noise-background.pn
 
 $$\Omega^{-1}\ll\Delta t\ll\gamma^{-1}$$
 
-$$H_I^{(n)}=\sqrt{\frac{\gamma}{\Delta t}}\left(c\!\otimes\!b_n^\dagger
--c^\dagger\!\otimes\!b_n\right)$$
+$$H_I^{(n)}=\sqrt{\frac{\gamma}{\Delta t}}\left(L\!\otimes\!b_n^\dagger
+-L^\dagger\!\otimes\!b_n\right)$$
 
-1<sup>st</sup> Markov {data-background-image="img/white-noise-background.png"}
----------------------
+1ˢᵗ Markov {data-background-image="img/white-noise-background.png"}
+----------
 
 ![](img/first-markov.svg)
 
@@ -220,6 +253,8 @@ $$\Delta x\ll c\Delta t$$
 
 2ⁿᵈ Markov {data-background-image="img/white-noise-background.png"}
 ----------
+
+![](img/correlated-probes.svg)
 
 $$\tau_c\ll\Delta t$$
 
@@ -237,76 +272,109 @@ Markovian circuit {data-background-image="img/white-noise-background.png"}
 
 ![](img/iter-meas.svg)
 
-Unitary
--------
+Use quantum noise increments
+----------------------------
 
-$$\begin{multline}
-U_I^{(n)}=\mathbb{1}+\Delta tH_I^{(n)}+\tfrac{1}{2}\Delta t^2H_I^{(n)}^2
+Operators encapsulating quantum fluctuations
+
+Continuous and discrete versions
+
+$$\begin{aligned}
+dB_t&=\int_t^{t+dt}\!ds\,b_s\quad
 \\
-=\mathbb{1}
-+\sqrt{\gamma\Delta t}(c\!\otimes\!b_n^\dagger-c^\dagger\!\otimes\!b_n)
+\Delta B_n&=\sqrt{\Delta t}\,b_n
+\end{aligned}$$
+
+Vacuum simplifies things
+------------------------
+
+Single-photon population in $\Delta t$ is small, higher photon numbers
+negligible, so each $\Delta t$ mode is effectively a qubit:
+
+$$\begin{aligned}
+b_n&\sim\sigma_-^{(n)}
 \\
-+\tfrac{1}{2}\gamma\Delta t(c\!\otimes\!b_n^\dagger
--c^\dagger\!\otimes\!b_n)^2
-\end{multline}$$
+\Delta B_n&\sim\sqrt{\Delta t}\,\sigma_-^{(n)}
+\end{aligned}$$
 
-Quantum noise
--------------
+Take qubit picture seriously
+----------------------------
 
-$$dB_t=\int_t^{t+dt}\!ds\,b_s$$
+![](img/qubit-models.png)
 
-$$\Delta B_n=\Delta t\frac{b_n}{\sqrt{\Delta t}}=\sqrt{\Delta t}\,b_n$$
+Homodyne &Leftrightarrow; X
+---------------------------
 
-Vacuum
-------
-
-Single photon population within $\Delta t$ mode is small. Higher photon
-populations are negligible.
-
-$$dB_tdB_t^\dagger=dt$$
-
-$$dB_tdB_t=dB_t^\dagger dB_t=dB_t^\dagger dB_t^\dagger=0$$
-
-Vacuum
-------
-
-Since we only care about 0 or 1 photon in the mode, each $\Delta t$ mode is
-effectively a qubit:
-
-$$\Delta B_n=\sqrt{\Delta t}\,\sigma_-$$
-
-Unitary (revisited)
--------------------
-
-$$\begin{multline}
-U_I^{(n)}=\mathbb{1}+\sqrt{\gamma}(c\!\otimes\!\Delta B_n^\dagger
--c^\dagger\!\otimes\!\Delta B_n)
-\\
--\tfrac{1}{2}\gamma\Delta t\,c^\dagger c
-\end{multline}$$
-
-Homodyne measurement in qubit picture
--------------------------------------
+![](img/homodyne-ckt.svg)
 
 $$dB_t^\dagger+dB_t$$
-$$\Delta B_n+\Delta B_n^\dagger=\sqrt{\Delta t}(\sigma_-+\sigma_+)
-\propto\sigma_x$$
+$$\Delta B_n+\Delta B_n^\dagger=\sqrt{\Delta t}(\sigma_-^{(n)}+\sigma_+^{(n)})
+\propto\sigma_x^{(n)}$$
 
-Spin-coherent-state measurement
--------------------------------
+Homodyne &Leftrightarrow; X
+---------------------------
 
-Interaction circuit
+![](img/homodyne-ckt.svg)
 
-$$U_{t,t+dt}=I+\sqrt{\gamma}\mathbf{J}\cdot(d\mathbf{B}_t^\dagger
--d\mathbf{B}_t)+\tfrac{1}{2}\gamma dt\Vert\mathbf{J}\Vert^2$$
+$$\begin{aligned}
+K_\pm&=\langle\pm|U_I|g\rangle
+\\
+&=\tfrac{1}{\sqrt{2}}\left(\mathbb{1}\pm\sqrt{\gamma\Delta t}\,c
+-\tfrac{1}{2}\gamma\Delta t\,c^\dagger c\right)
+\end{aligned}$$
 
-Gaussian white-noise
+Homodyne is diffusive
+---------------------
+
+![](img/vacuum-homodyne-trajectories.svg)
+
+$$\mathbb{E}[dW_t^2]=dt,\quad \int_0^tdW_s\sim\mathcal{N}(0,t)$$
+
+$$\Delta W_n=\operatorname{\pm}_n\sqrt{\Delta t}=
+\sqrt{2}\langle\pm|(\Delta B+\Delta B^\dagger)|g\rangle$$
+
+Homodyne gives spin-coherent-state measurement
+----------------------------------------------
+
+![](img/scs-arxiv.png)
+
+$$\begin{aligned}
+U_{t,t+dt}&=I+\sqrt{\gamma}\mathbf{J}\cdot(d\mathbf{B}_t^\dagger
+-d\mathbf{B}_t)+\tfrac{1}{2}\gamma dt\Vert\mathbf{J}\Vert^2
+\\
+&=\mathbb{1}+dU_t
+\end{aligned}$$
+
+Quantum noise gives Kraus-operator evolution
+--------------------------------------------
+
+$$\begin{aligned}
+dK&=\langle\operatorname{\pm}_t^x\operatorname{\pm}_t^y
+\operatorname{\pm}_t^z|dU_t|\mathbf{0}_t\rangle K
+\\
+&\propto\left(\sqrt{\gamma}d\mathbf{W}_t\cdot\mathbf{J}
+-\tfrac{1}{2}\gamma dt\Vert\mathbf{J}\Vert^2\right)K
+\end{aligned}$$
+
+Solving this allowed Shojaee *et al.* to prove the POVM limits to the
+spin-coherent-state POVM.
+
+Provides an example of measurement weakness allowing us to do something new!
+
+How do we move beyond vacuum?
+-----------------------------
+
+![](img/qubit-models.png)
+
+By being clever with qubits!
+
+Gaussian white noise {data-background-image="img/white-noise-background.png"}
 --------------------
 
-$$\langle dB_t\rangle=\beta_tdt$$
-$$\langle dB_t^\dagger dB_t\rangle=Ndt$$
-$$\langle dB_tdB_t\rangle=Mdt$$
-$$\langle[dB_t,dB_t^\dagger]\rangle=dt$$
+$$\langle b_t\rangle=\beta_t$$
+$$\langle b_s^\dagger b_t\rangle=N\delta(s-t)$$
+$$\langle b_sb_t\rangle=M\delta(s-t)$$
+$$\langle[b_s,b_t^\dagger]\rangle=\delta(s-t)$$
 
 Mean fields are small rotations
 -------------------------------
@@ -334,15 +402,30 @@ Squeezed fields are modified couplings/measurements
 
 ![](img/vacuum-orthogonal-quadratures.svg)
 
+$$\begin{multline}
+U_I^{(n)}=\mathbb{1}+\sqrt{\gamma\Delta t}(c\!\otimes\!\sigma_+^{(n)}
+-c^\dagger\!\otimes\!\sigma_-^{(n)})
+\\
+-\tfrac{1}{2}\gamma\Delta t\,c^\dagger c
+\end{multline}$$
+
 Squeezed fields are modified couplings/measurements
 ---------------------------------------------------
 
 ![](img/squeezed-orthogonal-quadratures.svg)
 
+Qubit state space is not rich enough to describe squeezing
+
 Squeezed fields are modified couplings/measurements
 ---------------------------------------------------
 
 ![](img/vacuum-correlated-quadratures.svg)
+
+$$\begin{aligned}
+\sigma_{x,\text{sq}}&=\sigma_x(\cosh r-\cos2\mu\sinh r)
+\\
+&\quad+\sigma_y\sin2\mu\sinh r
+\end{aligned}$$
 
 Photon counting in the presence of squeezing
 --------------------------------------------
@@ -352,6 +435,14 @@ Photon counting in the presence of squeezing
 Infinite photon flux in the broadband case
 
 $$\langle b_tb_s\rangle=M\delta(t-s)$$
+
+Photon counting in the presence of squeezing
+--------------------------------------------
+
+![](img/infinite-bandwidth.svg)
+
+Infinite photon flux in the broadband case
+
 $$\langle \tilde{b}_\Omega\tilde{b}_{\Omega-\omega}\rangle=\text{constant}$$
 
 Photon counting in the presence of squeezing
@@ -379,44 +470,6 @@ Squeezed wavepackets have temporal correlations
 $$\langle b^\dagger_tb_s\rangle=\xi_t\xi^*_sN$$
 $$\langle b_tb_s\rangle=\xi_t^*\xi_s^*M$$
 
-Temporal decomposition
-----------------------
-
-![](img/temporal-decomposition.svg)
-
-$N$-photon wavepacket
-
-$$\begin{multline}
-\left|N_\xi\right\rangle=(1-\tfrac{1}{2}|\xi_t|^2dt)\left|0_t\right\rangle
-\!\otimes\!\left|N_{\overline{t}}\right\rangle+
-\\
-\xi_t\sqrt{N\,dt\,}\left|1_t\right\rangle
-\!\otimes\!\left|(N-1)_{\overline{t}}\right\rangle
-\end{multline}$$
-
-Temporal decomposition
-----------------------
-
-![](img/temporal-decomposition.svg)
-
-$$S_\gamma[\xi]=e^XS_\gamma[\overline{t}]e^{-X}$$
-
-$$X=-\xi^*_tdB_tB[\overline{t}]^\dagger+\xi_tdB_t^\dagger B[\overline{t}]$$
-
-Temporal decomposition
-----------------------
-
-$$\begin{multline}
-\left|N_{\gamma,\xi}\right\rangle=\left|N_t\right\rangle\!\otimes\!
-\left(\left|N_{\gamma,\overline{t}}\right\rangle+
-dt\left|\tilde{\psi}_{dt}\right\rangle\right)+
-\\
-\xi_t\sqrt{dt}\left|1_t\right\rangle
-\!\otimes\!\left(c\sqrt{N}\left|(N-1)_{\gamma,\overline{t}}\right\rangle+\right.
-\\
-\left.se^{2i\mu}\sqrt{N+1}\left|(N+1)_{\gamma,\overline{t}}\right\rangle\right)
-\end{multline}$$
-
 System state
 ------------
 
@@ -437,19 +490,68 @@ $$\rho_{t|\mathbf{R}}^{(m,n)}=\frac{\operatorname{tr}_{[t,\infty)}
 C_{\mathbf{R}}^\dagger\Big]}{\operatorname{Pr}(\mathbf{R})}$$
 $$C_{\mathbf{R}}=\langle\mathbf{R}|U_{0,t}\otimes\mathbb{1}_{[t,\infty)}$$
 
-Photon-counting evolution
--------------------------
+Use to keep track of system--wavepacket correlations.
 
-![](img/photon-counting-equations.svg)
+Pioneered with number states
+----------------------------
+
+![](img/fock-trajectories.svg)
+
+Temporal decomposition
+----------------------
+
+![](img/temporal-decomposition.svg)
+
+$N$-photon wavepacket
+
+$$\begin{aligned}
+\left|N_\xi\right\rangle&\sim\left|0_t\right\rangle
+\!\otimes\!\left|N_{\overline{t}}\right\rangle+
+\\
+&\quad\,\,\left|1_t\right\rangle
+\!\otimes\!\left|(N-1)_{\overline{t}}\right\rangle
+\end{aligned}$$
 
 Number couples &leftarrow; and &downarrow;
 ------------------------------------------
 
 ![](img/number-hierarchy-coupling.svg)
 
-$$d\rho_{t|\mathbf{R}}^{(m,n)}=f\left(\rho_{t|\mathbf{R}}^{(m,n)},
-\rho_{t|\mathbf{R}}^{(m-1,n)},\rho_{t|\mathbf{R}}^{(m,n-1)},
-\rho_{t|\mathbf{R}}^{(m-1,n-1)}\right)$$
+$$\begin{aligned}
+d\rho_{t|\mathbf{R}}^{(m,n)}&=f\left(\rho_{t|\mathbf{R}}^{(m,n)},
+\rho_{t|\mathbf{R}}^{(m-1,n)},\right.
+\\
+&\qquad\,\left.\rho_{t|\mathbf{R}}^{(m,n-1)},
+\rho_{t|\mathbf{R}}^{(m-1,n-1)}\right)
+\end{aligned}$$
+
+Extend to squeezed states
+-------------------------
+
+![](img/ch6.svg)
+
+Squeezed decomposition
+----------------------
+
+![](img/temporal-decomposition.svg)
+
+$$S_\gamma[\xi]=e^XS_\gamma[\overline{t}]e^{-X}$$
+
+$$X=-\xi^*_tdB_tB[\overline{t}]^\dagger+\xi_tdB_t^\dagger B[\overline{t}]$$
+
+Squeezed decomposition
+----------------------
+
+![](img/temporal-decomposition.svg)
+
+$$\begin{aligned}
+\left|N_{\gamma,\xi}\right\rangle&\sim\left|0_t\right\rangle\!\otimes\!
+\left|N_{\gamma,\overline{t}}\right\rangle+
+\\
+&\quad\,\,\left|1_t\right\rangle
+\!\otimes\!\left(\left|(N-1)_{\gamma,\overline{t}}\right\rangle
++\left|(N+1)_{\gamma,\overline{t}}\right\rangle\right)
+\end{aligned}$$
 
 Squeezed couples &leftarrow;, &rightarrow;, &downarrow;, &uparrow;!
 -------------------------------------------------------------------
@@ -460,28 +562,51 @@ $$d\rho_{t|\mathbf{R}}^{(m,n)}=f\left(\rho_{t|\mathbf{R}}^{(m,n)},
 \rho_{t|\mathbf{R}}^{(m-1,n-1)},\ldots,
 \rho_{t|\mathbf{R}}^{(m+1,n+1)}\right)$$
 
-Simulation requires truncation
-------------------------------
+Apply to resonance fluorescence
+-------------------------------
 
-![](img/squeezed-hierarchy-boundary.svg)
+![](img/mollow-no-squeeze.svg)
 
-$m\geq n_{\text{max}}$ or $n\geq n_{\text{max}}$:
+Drive a two-level atom with strong coherent field.
 
-$$\rho_{t|\mathbf{R}}^{(m,n)}=\mathbb{0}$$
+Previous analysis for broadband squeezing
+-----------------------------------------
 
-Need to compare truncations
+![](img/carmichael.png)
+
+Previous analysis for "narrow"-bandwidth squeezing
+--------------------------------------------------
+
+![](img/parkins.png)
+
+We probe narrow-band regime
 ---------------------------
 
-![](img/truncate-squeezed-state.svg)
+![](img/mollow-wavepacket-squeeze.svg)
 
-Number hierarchy: exact evolution for approximate initial state
+Squeeze phase &Rightarrow; broaden sidebands
 
-Need to compare truncations
+$$T=4\gamma^{-1},\quad e^r=4,\quad N=3.52,\quad 12.04\mathrm{dB}$$
+
+We probe narrow-band regime
 ---------------------------
 
-![](img/wavepacket-bipartition.svg)
+![](img/mollow-wavepacket-antisqueeze.svg)
 
-Squeezed hierarchy: exact initial state, approximate evolution
+Anti squeeze phase &Rightarrow; narrow sidebands
 
-&nbsp; {data-background-image="img/medium-wavepacket-convergence-rates.svg"}
-------
+$$T=4\gamma^{-1},\quad e^r=4,\quad N=3.52,\quad 12.04\mathrm{dB}$$
+
+Summary
+-------
+
+* Weak measurements are everywhere
+* We use POVMs to expose the salient properties of measurements
+* Quantum noise provides helpful continuous-measurement framework
+* We do quantum noise with qubits!
+* Markovianity brings power problems
+* We use an equation hierarchy to describe finite-bandwidth effects and overcome
+  the power problems
+
+Acknowledgments
+---------------
