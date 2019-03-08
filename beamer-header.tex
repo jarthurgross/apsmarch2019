@@ -3,6 +3,18 @@
 \setbeamercolor{normal text}{fg=white}
 \setbeamercolor{titlelike}{fg=white}
 \setbeamercolor{structure}{fg=white}
-\setkeys{Gin}{height=0.35\textwidth}
+\usepackage{graphicx}
+\makeatletter
+\def\ScaleIfNeeded{%
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+\setkeys{Gin}{width=\ScaleIfNeeded}
+%\setkeys{Gin}{height=0.35\textwidth}
 \usepackage{caption}
+\usepackage{bbold}
 \captionsetup[figure]{labelformat=empty}

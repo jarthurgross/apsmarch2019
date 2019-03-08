@@ -17,3 +17,9 @@ slides.html
 slides.pdf
 img/*.pdf
 package-lock.json
+*.bkp
+*.aux
+*.log
+*.nav
+*.snm
+*.toc

@@ -1,5 +1,7 @@
 #! /bin/sh
 
-pandoc -t beamer --smart --filter ~/src/haskell/pandoc-filters/pandoc-svg.hs \
+pandoc -f markdown+smart -t beamer --verbose \
   --include-in-header beamer-header.tex \
-  slides.md -o slides.pdf
+  slides-pdf.md -o slides.tex
+#  --filter ~/src/haskell/pandoc-filters/pandoc-svg.hs \
+# --pdf-engine=xelatex \

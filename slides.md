@@ -1,612 +1,142 @@
 ---
-title: 'Weak measurements'
-subtitle: 'for quantum characterization and control'
-abstract: ''
+title: 'One from many'
+subtitle: 'Scalar estimation in multiparameter&nbsp;contexts'
+abstract: 'Achievable sensitivity bounds are difficult to formulate for quantum multiparameter estimation. We consider a specialized case: many parameters of a Hamiltonian are unknown and one seeks an estimate for a scalar function of the Hamiltonian. This problem exhibits genuine multiparameter behavior, though it is superficially similar to single-parameter estimation. By uniting saturable single-parameter quantum bounds with geometric reasoning we prove the conditions, necessary and sufficient, for saturating the fundamental and attainable bound in this context.'
 author: Jonathan A. Gross
+coauthor:
+  - Carlton M. Caves
 
 ---
 
-Measurements are questions
---------------------------
+## Models have free parameters
 
-Answers are random and depend on the configuration of the world.
+![](img/BoysSurfaceTopView-trans.PNG){width=300px}
 
-The world reconfigures itself to act consistently with its answers.
+$$\mathbf{\theta}=(\theta^1,\ldots,\theta^N)$$
 
-We can ask precise questions
-----------------------------
+## Estimates are always noisy
 
-Possible answers $\{o_1,o_2,\ldots\}$
+![](img/MultivariateNormal-inverted.png){width=320px}
 
-World configuration $|\psi\rangle$:
+$$\text{Cov}\left(\hat{\mathbf{\theta}}\right)$$
 
-$$\operatorname{Pr}(o_j|\psi)=|\langle o_j|\psi\rangle|^2$$
+## Fisher information reigns
 
-Reconfiguration:
+![](img/cfi.svg){width=280px}
 
-$$|\psi\rangle\overset{o_j}{\rightarrow}|o_j\rangle$$
+$$F_{jk}=
+\int dx\frac{\partial_j\Pr(x|\mathbf{\theta})\,\partial_k\Pr(x|\mathbf{\theta})}
+{\Pr(x|\mathbf{\theta})}$$
 
-We can ask imprecise questions
-------------------------------
+## Fisher information reigns
 
-![](img/stern-gerlach.svg)
+![](img/cfi-cov.svg){width=280px}
 
-Want to know: did the atom follow the [**red**]{.red} or the [**blue**]{.blue}
-arrow?
+$$\text{Cov}\left(\hat{\mathbf{\theta}}\right)\geq F^{-1}$$
 
-Ask: did the atom hit the top or bottom half of the screen?
+## How about a single number?
 
-All measurements have imprecision
----------------------------------
+![](img/sensor-network.svg)
 
-![](img/stern-gerlach.svg)
+$q=\sum_jq_jB^j$
 
-*Precise* measurements are **strong**, *imprecise* measurements are **weak**.
+<cite>*Optimal and secure measurement protocols for quantum sensor networks*,
+Zachary Eldredge, Michael Foss-Feig, JAG, S. L. Rolston, and Alexey V.
+Gorshkov, Phys. Rev. A **97**, 042337 (2018)</cite>
 
-How do we describe weak measurements?
+## How about a single number?
 
-Use an ignorant messenger
--------------------------
+![](img/sensor-network.svg)
 
-![](img/weak-interaction.svg)
+Identify $\theta^k$ and calculate $F_{kk}$, right?
 
-Kraus operator: $K_j=\langle o_j|U(\epsilon)|\phi\rangle$.
+<cite>*Optimal and secure measurement protocols for quantum sensor networks*,
+Zachary Eldredge, Michael Foss-Feig, JAG, S. L. Rolston, and Alexey V.
+Gorshkov, Phys. Rev. A **97**, 042337 (2018)</cite>
 
-$$|\psi\rangle\overset{o_j}{\rightarrow}|\psi^\prime\rangle\propto
-K_j|\psi\rangle$$
+## WRONG!
 
-Use an ignorant messenger
--------------------------
+You will calculate unattainable sensitivity goals.
 
-![](img/weak-interaction.svg)
+You will construct estimators with unnecessary errors.
 
-Positive-operator-valued measure (POVM):
+## &nbsp;{background-image="img/mtw.png"}
 
-$$E_j=K_j^\dagger K_j,\quad\operatorname{Pr}(o_j|\psi)
-=\operatorname{tr}[E_j|\psi\rangle\langle\psi|]$$
+## Parameters define tangent vectors
 
-POVMs give nice weakness criteria
----------------------------------
+![](img/parameter-vector.svg){width=280px}
 
-Almost all measurement outcomes are uninformative
+$$F_{jk}=
+\int dx\frac{\partial_j\Pr(x|\mathbf{\theta})\,\partial_k\Pr(x|\mathbf{\theta})}
+{\Pr(x|\mathbf{\theta})}$$
 
-"Most" of the POVM is "close" to identity
+## Functions define differential forms
 
-$$\sum_{E\approx\lambda\mathbb{1}}E\approx\mathbb{1}$$
+![](img/one-form.svg){width=280px}
 
-Learn by asking questions
--------------------------
+$q=\theta^1+\frac{1}{2}\theta^2$
 
-![](img/tomography.svg)
+## Parameters define conditioning
 
-Quantum state tomography learns $\rho$ by polling a large population.
+![](img/conditional-dist.svg){width=500px}
 
-Is it useful to ask imprecise questions?
+$(F_{kk})^{-1}$ bounds conditional variance
 
-Precise questions are limited
------------------------------
+## Functions define marginalizing
 
-![](img/random-odop-ckt.svg)
+![](img/marginal-dist.svg){width=500px}
 
-Random projective measurement
+$(F^{-1})^{kk}$ bounds marginal variance
 
-Weakness can be a resource
---------------------------
+## Conditional isn't marginal
 
-![](img/weak-meas-universal.svg)
+![](img/marginal-conditional-dist.svg){width=500px}
 
-Can measure in ways random projective measurements can't.
+$(F_{kk})^{-1}\neq(F^{-1})^{kk}$
 
-Novelty claims abound
----------------------
-
-![](img/Das2014.svg)
-
-> This opens up the possibility of new ways of extracting information from
-> quantum ensembles.
-
-Novelty claims abound
----------------------
-
-![](img/Das2014.svg)
-
-POVM analysis is absent from this and many other proposals, *yet demonstrating
-properties like novelty requires such analysis*.
-
-Be the change you want to see
------------------------------
-
-![](img/weak-meas-tomo.svg)
-
-We did the analysis!
-
-Couple to meter
----------------
-
-![](img/das-weak-interaction.svg)
-
-$$|\phi\rangle=
-\sqrt[4]{\frac{\epsilon}{2\pi}}\int dq\,e^{-\epsilon q^2/4}|q\rangle$$
-
-Displace wide Gaussians
------------------------
-
-![](img/continuous-meter.svg)
-
-$$K^{(j)}(q)\propto\cosh(\tfrac{1}{2}\epsilon q)\mathbb{1}
-+\sinh(\tfrac{1}{2}\epsilon q)\sigma_j$$
-$$\epsilon=1/\Delta q^2$$
-
-Compose measurements
---------------------
-
-![](img/weak-meas-ckt.svg)
+## Quantum models define many distributions
 
 $$\begin{aligned}
-K_\pm(q_1,q_2)&=|\pm y\rangle\langle\pm y|K^{(x)}(q_2)K^{(z)}(q_1)
+H(\mathbf{\theta})&=\sum_j\theta^jX_j
 \\
-&\propto|\pm y\rangle\langle\phi_\pm(q_1,q_2)|
+\rho(\mathbf{\theta})&=e^{-itH(\mathbf{\theta})}\rho_0e^{itH(\mathbf{\theta})}
+\\
+\Pr(x|\mathbf{\theta})&=\operatorname{tr}[\rho(\mathbf{\theta})E_x]
 \end{aligned}$$
 
-POVM is made of projectors
---------------------------
+## Optimize over choices
 
-![](img/weak-meas-ckt.svg)
+![](img/process-norm.svg){width=300px}
 
-$$dE_\pm(q_1,q_2)=dq_1dq_2D(q_1,q_2)\tfrac{1}{2}(\mathbb{1}
-+\hat{\mathbf{n}}_\pm(q_1,q_2)\!\cdot\!\mathbf{\sigma})$$
+$$\Vert\theta^k\Vert^2=\max_{\rho_0,\{E_x\}}F_{jj}$$
 
-Elements come in pairs!
------------------------
+## Optimize over choices
 
-![](img/projector-pairs.svg)
+![](img/process-norm-1.svg){width=300px}
 
-$$\begin{aligned}
-D(q_1,q_2)&=D(-q_1,-q_2)
-\\
-\hat{\mathbf{n}}_\pm(q_1,q_2)&=-\hat{\mathbf{n}}_\mp(-q_1,-q_2)
-\end{aligned}$$
+$$\Vert\theta^k\Vert^2=\max_{\rho_0,\{E_x\}}F_{jj}$$
 
-Equivalent to random strong measurement
----------------------------------------
+## Optimize over choices
 
-![](img/random-projector-das.svg)
+![](img/process-norm-2.svg){width=300px}
 
-$$d\tilde{E}_\pm(q_1,q_2)=dq_1dq_2D(q_1,q_2)\tfrac{1}{2}(\mathbb{1}
-\pm\hat{\mathbf{n}}_+(q_1,q_2)\!\cdot\!\mathbf{\sigma})$$
+$$\Vert\theta^k\Vert^2=\max_{\rho_0,\{E_x\}}F_{jj}$$
 
-Represent as hemisphere distribution
-------------------------------------
+## We use norm to "marginalize"
 
-![](img/bloch_densities.svg)
+![](img/attainable-bound.svg){width=400px}
 
-$$d\tilde{E}_\pm(q_1,q_2)=dq_1dq_2D(q_1,q_2)\tfrac{1}{2}(\mathbb{1}
-\pm\hat{\mathbf{n}}_+(q_1,q_2)\!\cdot\!\mathbf{\sigma})$$
+## Summary{background-image=img/E_PLURIBUS_UNUM.png}
 
+<div class='dark-bg'>
 
-POVMs show protocol equivalence
--------------------------------
+Estimating a scalar function of many parameters is not a single-parameter
+problem.
 
-If two protocols give the same measure over positive operators, they yield the
-same information content.
+Relationship of differential form $dq$ to norm $\Vert\cdot\Vert$ gives best
+sensitivity and optimal measurement (holds for arbitrary processes).
 
-Use this strategy to investigate continuous-measurement protocols.
+For more information on upcoming manuscript, see
+[**unm.edu/~jagross/blog**](http://www.unm.edu/~jagross/blog)
 
-First, what are continuous measurements?
-
-Use a field for continuous measurement
---------------------------------------
-
-![](img/input-output.svg)
-
-&nbsp;
-
-Discretize the field </br> &nbsp;
----------------------------------
-
-![](img/discrete-input-output.svg)
-
-Each segment performs a weak measurement
-
-Get difference equation
------------------------
-
-![](img/iter-meas.svg)
-
-$$\Delta\rho_{n|j}=\frac{K_j\rho_nK_j^\dagger}{\operatorname{tr}(E_j\rho_n)}
--\rho_n$$
-When can we do this?
-
-Work in white-noise regime {data-background-image="img/white-noise-background.png"}
---------------------------
-
-Approximations
-
-1. Rotating wave (RWA)
-2. Quasimonochromatic
-3. 1ˢᵗ Markov
-4. 2ⁿᵈ Markov
-
-Quasimonochromatic and RWA {data-background-image="img/white-noise-background.png"}
---------------------------
-
-![](img/quasimonochromatic.svg)
-
-$$\Omega^{-1}\ll\Delta t\ll\gamma^{-1}$$
-
-$$H_I^{(n)}=\sqrt{\frac{\gamma}{\Delta t}}\left(L\!\otimes\!b_n^\dagger
--L^\dagger\!\otimes\!b_n\right)$$
-
-1ˢᵗ Markov {data-background-image="img/white-noise-background.png"}
-----------
-
-![](img/first-markov.svg)
-
-$$\Delta x\ll c\Delta t$$
-
-1ˢᵗ Markov {data-background-image="img/white-noise-background.png"}
-----------
-
-![](img/1st-markov.svg)
-
-$$\Delta x\ll c\Delta t$$
-
-2ⁿᵈ Markov {data-background-image="img/white-noise-background.png"}
-----------
-
-![](img/correlated-probes.svg)
-
-$$\tau_c\ll\Delta t$$
-
-All approximations {data-background-image="img/white-noise-background.png"}
-------------------
-
--------------------------------------- --------------------------
-$\Delta x\ll c\Delta t$                First Markov
-$\tau_c \ll \Delta t$                  Second Markov
-$\Omega^{-1}\ll\Delta t\ll\gamma^{-1}$ RWA and quasimonochromatic
--------------------------------------- --------------------------
-
-Markovian circuit {data-background-image="img/white-noise-background.png"}
------------------
-
-![](img/iter-meas.svg)
-
-Use quantum noise increments
-----------------------------
-
-Operators encapsulating quantum fluctuations
-
-Continuous and discrete versions
-
-$$\begin{aligned}
-dB_t&=\int_t^{t+dt}\!ds\,b_s\quad
-\\
-\Delta B_n&=\sqrt{\Delta t}\,b_n
-\end{aligned}$$
-
-Vacuum simplifies things
-------------------------
-
-Single-photon population in $\Delta t$ is small, higher photon numbers
-negligible, so each $\Delta t$ mode is effectively a qubit:
-
-$$\begin{aligned}
-b_n&\sim\sigma_-^{(n)}
-\\
-\Delta B_n&\sim\sqrt{\Delta t}\,\sigma_-^{(n)}
-\end{aligned}$$
-
-Take qubit picture seriously
-----------------------------
-
-![](img/qubit-models.png)
-
-Homodyne &Leftrightarrow; X
----------------------------
-
-![](img/homodyne-ckt.svg)
-
-$$dB_t^\dagger+dB_t$$
-$$\Delta B_n+\Delta B_n^\dagger=\sqrt{\Delta t}(\sigma_-^{(n)}+\sigma_+^{(n)})
-\propto\sigma_x^{(n)}$$
-
-Homodyne &Leftrightarrow; X
----------------------------
-
-![](img/homodyne-ckt.svg)
-
-$$\begin{aligned}
-K_\pm&=\langle\pm|U_I|g\rangle
-\\
-&=\tfrac{1}{\sqrt{2}}\left(\mathbb{1}\pm\sqrt{\gamma\Delta t}\,c
--\tfrac{1}{2}\gamma\Delta t\,c^\dagger c\right)
-\end{aligned}$$
-
-Homodyne is diffusive
----------------------
-
-![](img/vacuum-homodyne-trajectories.svg)
-
-$$\mathbb{E}[dW_t^2]=dt,\quad \int_0^tdW_s\sim\mathcal{N}(0,t)$$
-
-$$\Delta W_n=\operatorname{\pm}_n\sqrt{\Delta t}=
-\sqrt{2}\langle\pm|(\Delta B+\Delta B^\dagger)|g\rangle$$
-
-Homodyne gives spin-coherent-state measurement
-----------------------------------------------
-
-![](img/scs-arxiv.png)
-
-$$\begin{aligned}
-U_{t,t+dt}&=I+\sqrt{\gamma}\mathbf{J}\cdot(d\mathbf{B}_t^\dagger
--d\mathbf{B}_t)+\tfrac{1}{2}\gamma dt\Vert\mathbf{J}\Vert^2
-\\
-&=\mathbb{1}+dU_t
-\end{aligned}$$
-
-Quantum noise gives Kraus-operator evolution
---------------------------------------------
-
-$$\begin{aligned}
-dK&=\langle\operatorname{\pm}_t^x\operatorname{\pm}_t^y
-\operatorname{\pm}_t^z|dU_t|\mathbf{0}_t\rangle K
-\\
-&\propto\left(\sqrt{\gamma}d\mathbf{W}_t\cdot\mathbf{J}
--\tfrac{1}{2}\gamma dt\Vert\mathbf{J}\Vert^2\right)K
-\end{aligned}$$
-
-Solving this allowed Shojaee *et al.* to prove the POVM limits to the
-spin-coherent-state POVM.
-
-Provides an example of measurement weakness allowing us to do something new!
-
-How do we move beyond vacuum?
------------------------------
-
-![](img/qubit-models.png)
-
-By being clever with qubits!
-
-Gaussian white noise {data-background-image="img/white-noise-background.png"}
---------------------
-
-$$\langle b_t\rangle=\beta_t$$
-$$\langle b_s^\dagger b_t\rangle=N\delta(s-t)$$
-$$\langle b_sb_t\rangle=M\delta(s-t)$$
-$$\langle[b_s,b_t^\dagger]\rangle=\delta(s-t)$$
-
-Mean fields are small rotations
--------------------------------
-
-![](img/mean-field.svg)
-
-$$|\beta\rangle=D(\beta)|g\rangle=(1-\tfrac{1}{2}|\beta|^2dt)|g\rangle
-+\beta\sqrt{dt}|e\rangle$$
-
-$$D(\beta)=\exp\!\left(\beta\sqrt{dt}\,\sigma_+
--\beta^*\sqrt{dt}\,\sigma_-\right)$$
-
-Thermal fields are thermal qubits
----------------------------------
-
-![](img/thermal-field.svg)
-
-$$\sigma_{\text{th}}=\tfrac{N}{2N+1}|e\rangle\langle e|
-+\tfrac{N+1}{2N+1}|g\rangle\langle g|$$
-
-$$\gamma_N=(2N+1)\gamma$$
-
-Squeezed fields are modified couplings/measurements
----------------------------------------------------
-
-![](img/vacuum-orthogonal-quadratures.svg)
-
-$$\begin{multline}
-U_I^{(n)}=\mathbb{1}+\sqrt{\gamma\Delta t}(c\!\otimes\!\sigma_+^{(n)}
--c^\dagger\!\otimes\!\sigma_-^{(n)})
-\\
--\tfrac{1}{2}\gamma\Delta t\,c^\dagger c
-\end{multline}$$
-
-Squeezed fields are modified couplings/measurements
----------------------------------------------------
-
-![](img/squeezed-orthogonal-quadratures.svg)
-
-Qubit state space is not rich enough to describe squeezing
-
-Squeezed fields are modified couplings/measurements
----------------------------------------------------
-
-![](img/vacuum-correlated-quadratures.svg)
-
-$$\begin{aligned}
-\sigma_{x,\text{sq}}&=\sigma_x(\cosh r-\cos2\mu\sinh r)
-\\
-&\quad+\sigma_y\sin2\mu\sinh r
-\end{aligned}$$
-
-Photon counting in the presence of squeezing
---------------------------------------------
-
-![](img/infinite-bandwidth.svg)
-
-Infinite photon flux in the broadband case
-
-$$\langle b_tb_s\rangle=M\delta(t-s)$$
-
-Photon counting in the presence of squeezing
---------------------------------------------
-
-![](img/infinite-bandwidth.svg)
-
-Infinite photon flux in the broadband case
-
-$$\langle \tilde{b}_\Omega\tilde{b}_{\Omega-\omega}\rangle=\text{constant}$$
-
-Photon counting in the presence of squeezing
---------------------------------------------
-
-![](img/finite-bandwidth.svg)
-
-Need restrict the bandwidth of the squeezing
-
-Squeezed wavepackets
---------------------
-
-![](img/wavepacket.svg)
-
-$$S_\gamma[\xi]=\exp\left[\tfrac{1}{2}\left(\gamma^*B[\xi]^2
--\gamma B^\dagger[\xi]^2\right)\right]$$
-
-$$B[\xi]=\int dt\,\xi^*_tb_t$$
-
-Squeezed wavepackets have temporal correlations
------------------------------------------------
-
-![](img/wavepacket.svg)
-
-$$\langle b^\dagger_tb_s\rangle=\xi_t\xi^*_sN$$
-$$\langle b_tb_s\rangle=\xi_t^*\xi_s^*M$$
-
-System state
-------------
-
-![](img/wavepacket-measurement.svg)
-
-$$\rho_{t|\mathbf{R}}=\frac{\operatorname{tr}_{[t,\infty)}
-\Big[C_{\mathbf{R}}\big(\rho_0\otimes|0_{\gamma,\xi}\rangle
-\langle0_{\gamma,\xi}|\big)
-C_{\mathbf{R}}^\dagger\Big]}{\operatorname{Pr}(\mathbf{R})}$$
-$$C_{\mathbf{R}}=\langle\mathbf{R}|U_{0,t}\otimes\mathbb{1}_{[t,\infty)}$$
-
-"Bookkeeping" states
---------------------
-
-$$\rho_{t|\mathbf{R}}^{(m,n)}=\frac{\operatorname{tr}_{[t,\infty)}
-\Big[C_{\mathbf{R}}\big(\rho_0\otimes|m_{\gamma,\xi}\rangle
-\langle n_{\gamma,\xi}|\big)
-C_{\mathbf{R}}^\dagger\Big]}{\operatorname{Pr}(\mathbf{R})}$$
-$$C_{\mathbf{R}}=\langle\mathbf{R}|U_{0,t}\otimes\mathbb{1}_{[t,\infty)}$$
-
-Use to keep track of system--wavepacket correlations.
-
-Pioneered with number states
-----------------------------
-
-![](img/fock-trajectories.svg)
-
-Temporal decomposition
-----------------------
-
-![](img/temporal-decomposition.svg)
-
-$N$-photon wavepacket
-
-$$\begin{aligned}
-\left|N_\xi\right\rangle&\sim\left|0_t\right\rangle
-\!\otimes\!\left|N_{\overline{t}}\right\rangle+
-\\
-&\quad\,\,\left|1_t\right\rangle
-\!\otimes\!\left|(N-1)_{\overline{t}}\right\rangle
-\end{aligned}$$
-
-Number couples &leftarrow; and &downarrow;
-------------------------------------------
-
-![](img/number-hierarchy-coupling.svg)
-
-$$\begin{aligned}
-d\rho_{t|\mathbf{R}}^{(m,n)}&=f\left(\rho_{t|\mathbf{R}}^{(m,n)},
-\rho_{t|\mathbf{R}}^{(m-1,n)},\right.
-\\
-&\qquad\,\left.\rho_{t|\mathbf{R}}^{(m,n-1)},
-\rho_{t|\mathbf{R}}^{(m-1,n-1)}\right)
-\end{aligned}$$
-
-Extend to squeezed states
--------------------------
-
-![](img/ch6.svg)
-
-Squeezed decomposition
-----------------------
-
-![](img/temporal-decomposition.svg)
-
-$$S_\gamma[\xi]=e^XS_\gamma[\overline{t}]e^{-X}$$
-
-$$X=-\xi^*_tdB_tB[\overline{t}]^\dagger+\xi_tdB_t^\dagger B[\overline{t}]$$
-
-Squeezed decomposition
-----------------------
-
-![](img/temporal-decomposition.svg)
-
-$$\begin{aligned}
-\left|N_{\gamma,\xi}\right\rangle&\sim\left|0_t\right\rangle\!\otimes\!
-\left|N_{\gamma,\overline{t}}\right\rangle+
-\\
-&\quad\,\,\left|1_t\right\rangle
-\!\otimes\!\left(\left|(N-1)_{\gamma,\overline{t}}\right\rangle
-+\left|(N+1)_{\gamma,\overline{t}}\right\rangle\right)
-\end{aligned}$$
-
-Squeezed couples &leftarrow;, &rightarrow;, &downarrow;, &uparrow;!
--------------------------------------------------------------------
-
-![](img/squeezed-hierarchy-coupling.svg)
-
-$$d\rho_{t|\mathbf{R}}^{(m,n)}=f\left(\rho_{t|\mathbf{R}}^{(m,n)},
-\rho_{t|\mathbf{R}}^{(m-1,n-1)},\ldots,
-\rho_{t|\mathbf{R}}^{(m+1,n+1)}\right)$$
-
-Apply to resonance fluorescence
--------------------------------
-
-![](img/mollow-no-squeeze.svg)
-
-Drive a two-level atom with strong coherent field.
-
-Previous analysis for broadband squeezing
------------------------------------------
-
-![](img/carmichael.png)
-
-Previous analysis for "narrow"-bandwidth squeezing
---------------------------------------------------
-
-![](img/parkins.png)
-
-We probe narrow-band regime
----------------------------
-
-![](img/mollow-wavepacket-squeeze.svg)
-
-Squeeze phase &Rightarrow; broaden sidebands
-
-$$T=4\gamma^{-1},\quad e^r=4,\quad N=3.52,\quad 12.04\mathrm{dB}$$
-
-We probe narrow-band regime
----------------------------
-
-![](img/mollow-wavepacket-antisqueeze.svg)
-
-Anti squeeze phase &Rightarrow; narrow sidebands
-
-$$T=4\gamma^{-1},\quad e^r=4,\quad N=3.52,\quad 12.04\mathrm{dB}$$
-
-Summary
--------
-
-* Weak measurements are everywhere
-* We use POVMs to expose the salient properties of measurements
-* Quantum noise provides helpful continuous-measurement framework
-* We do quantum noise with qubits!
-* Markovianity brings power problems
-* We use an equation hierarchy to describe finite-bandwidth effects and overcome
-  the power problems
-
-Acknowledgments
----------------
+</div>
